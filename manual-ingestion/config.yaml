@@ -1,0 +1,42 @@
+cat << EOF | envsubst > config.yaml
+general:
+  retries: 3
+  timeout: 30
+  verbose: true
+  insecure: true
+app:
+  base_url: "${BASE_URL}"
+  instance_id: "0000-0000-0000-0000"
+EOF
+
+if [[ -z ${TOKEN} ]]; then 
+  cat << EOF | envsubst >> config.yaml
+  auth:
+    user:
+      username: ${CONCERT_USERNAME}
+      password: ${CONCERT_PASSWORD}
+EOF
+else
+  cat << EOF | envsubst >> config.yaml
+  auth:
+    token:
+      token: ${TOKEN}
+EOF
+fi
+
+cat << EOF | envsubst >> config.yaml
+input-data:
+  application-def:
+    - file: "/toolkit-data/${APP_NAME}-${COMPONENT_NAME}-app-definition-sbom.json"
+  build:
+    - file: "/toolkit-data/${APP_NAME}-${COMPONENT_NAME}-build-sbom.json"
+  deploy:
+    - file: "/toolkit-data/${APP_NAME}-${COMPONENT_NAME}-deploy-sbom.json"
+  cyclonedx:
+    - file: "/toolkit-data/codescan-cyclonedx.json"
+    - file: "/toolkit-data/$(echo ${IMAGE_NAME}|tr "/" "_"):${IMAGE_TAG}-imagescan-cyclonedx-sbom.json"
+  image-scan:
+    - file: "/toolkit-data/cve-scan.json"
+      metadata:
+        scanner_name: "trivy"
+EOF
