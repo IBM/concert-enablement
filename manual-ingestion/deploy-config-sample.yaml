@@ -1,0 +1,40 @@
+cat << EOF | envsubst > deploy-config.yaml
+spec_version: "1.0.2"
+concert:
+  deployments:
+  - output_file: "${APP_NAME}-${COMPONENT_NAME}-deploy-sbom.json"
+    metadata:
+      component_name: "${COMPONENT_NAME}"
+      number: "1"
+      version: "${APP_VERSION}"
+    environment_target: "${ENV_TARGET}"
+    repositories:
+    - name: "${REPO_NAME}"
+      url: "${REPO_URL}"
+      branch: "${REPO_BRANCH}"
+      commit_sha: "${REPO_COMMIT_SHA}"
+    services:
+    - name: "${ACCESS_POINT_NAME}"
+      type: "app_access_point"
+      properties:
+        base_url: "${APP_URL}"
+    runtime:
+    - name: "${K8S_NAME}"
+      type: "kubernetes"
+      depends_on: 
+      - "${COMPONENT_NAME}"
+      properties:
+        platform: "${K8S_PLATFORM}"
+        cluster_platform: "${K8S_ENV_PLATFORM}"
+        cluster_id: "${K8S_CLUSTER_ID}"
+        cluster_region: "${K8S_CLUSTER_REGION}"
+        cluster_name: "${K8S_CLUSTER_NAME}"
+      api-server: ${K8S_APISERVER}
+      namespaces:
+      - name: "${K8S_NAMESPACE}"
+        images:
+        - name: "${IMAGE_NAME}"
+          tag: "${IMAGE_TAG}"
+          digest: "${IMAGE_DIGEST}"
+
+EOF
