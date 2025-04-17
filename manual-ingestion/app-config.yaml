@@ -1,0 +1,35 @@
+cat << EOF | envsubst > app-config.yaml
+spec_version: "1.0.2"
+concert:
+  application:
+    output_file: "${APP_NAME}-${COMPONENT_NAME}-app-definition-sbom.json"
+    app_name: "${APP_NAME}"
+    version: "${APP_VERSION}"
+    business:
+      name: "${BUSINESS_NAME}"
+      units:
+      - name: "${BUSINESS_UNIT}"
+        email: "${BUSINESS_EMAIL}"
+        phone: "${BUSINESS_PHONE}"
+    properties:
+      application_criticality: "${APP_CRITICALITY}"
+    components:
+    - component_name: "${COMPONENT_NAME}"
+      version: "${APP_VERSION}"
+      repositories:
+      - name: "${REPO_NAME}"
+        url: "${REPO_URL}"
+      image:
+        name: "${IMAGE_NAME}"
+    environment_targets:
+    - name: "${ENV_TARGET}"
+    services:
+    - name: "${ACCESS_POINT_NAME}"
+      type: "app_end_point"
+      endpoints: 
+      - "${APP_ENDPOINT}"
+      properties:
+        network_exposure: "${APP_ENDPOINT_EXPOSURE}"
+      reliant_by:
+      - "${COMPONENT_NAME}"
+EOF
