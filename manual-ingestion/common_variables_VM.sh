@@ -1,12 +1,13 @@
 #### Concert Toolkit Image
 ####
-export CONCERT_TOOLKIT_IMAGE=icr.io/cpopen/ibm-concert-toolkit:v1.0.4
+export CONCERT_TOOLKIT_IMAGE=icr.io/cpopen/ibm-concert-toolkit:v2.0.0.1
 
 #### Concert details
 ####
 export BASE_URL="https://<YOUR_CONCERT_VM_PUBLIC_IP>:12443"
 export CONCERT_USERNAME="<YOUR_CONCERT_USERNAME>"
 export CONCERT_PASSWORD="<YOUR_CONCERT_PASSWORD>"
+export TOKEN="<YOUR_CONCERT_API_KEY>"
 # If running Concert on OpenShift
 #export BASE_URL="https://concert-concert-instance.apps.679269c5f501a868a5829497.ocp.techzone.ibm.com/ibm/concert"
 #export TOKEN="ZenApiKey Y3BhZG1pbjpGOHZCeEtjQ1dPczlnN1lRaDZLb2VHS3M1eFBqWU90c04xYk5KSEhP"
@@ -49,8 +50,8 @@ export DEPLOYMENT_REPO_NAME=https://github.com/IBM/concert-enablement/tree/main/
 export K8_PLATFORM=0cр
 export CLUSTER_ENV_PLATFORM=techzone
 export CLUSTER_ID=19350ff9-8f6c-4624-861f-d5b556d7d092
-export CLUSTER REGION=
-export CLUSTER NAME=will
+export CLUSTER_REGION=
+export CLUSTER_NAME=will
 export CLUSTER_NAMESPACE=qotd-app
 export APP_URL=${COMPONENT_NAME}-qotd-app.apps.679269c5f501a868a5829497.ocp.techzone.ibm.com
 export ENVIRONMENT_TARGET=production
@@ -70,3 +71,4 @@ export K8S_CLUSTER_NAME=concert
 export K8S_NAMESPACE=qotd
 export CONTAINER_COMMAND="podman run"
 export OPTIONS="--platform linux/amd64 -it --rm -u 0 --network ibm-roja-network-01"
+
