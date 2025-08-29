@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cat << EOF | envsubst > config.yaml
 general:
   retries: 3
