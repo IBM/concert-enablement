@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cat << EOF | envsubst > deploy-config.yaml
 spec_version: "1.0.2"
 concert:
