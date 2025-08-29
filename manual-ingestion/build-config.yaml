@@ -1,3 +1,5 @@
+#!/bin/bash
+
 IMAGESCAN_FILE=$(echo ${IMAGE_NAME}|tr "/" "_"):${IMAGE_TAG}-imagescan-cyclonedx-sbom.json
 CODESCAN_URN=$(jq .serialNumber codescan-cyclonedx.json)
 IMAGESCAN_URN=$(jq .serialNumber ${IMAGESCAN_FILE})
