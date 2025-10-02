@@ -7,7 +7,7 @@ export CONCERT_TOOLKIT_IMAGE=icr.io/cpopen/ibm-concert-toolkit:v2.0.0.2
 export BASE_URL="https://<YOUR_CONCERT_VM_PUBLIC_IP>:12443"
 export CONCERT_USERNAME="<YOUR_CONCERT_USERNAME>"
 export CONCERT_PASSWORD="<YOUR_CONCERT_PASSWORD>"
-export TOKEN="<YOUR_CONCERT_API_KEY>"
+export TOKEN="C_API_KEY <YOUR_CONCERT_API_KEY>"
 # If running Concert on OpenShift
 #export BASE_URL="https://concert-concert-instance.apps.679269c5f501a868a5829497.ocp.techzone.ibm.com/ibm/concert"
 #export TOKEN="ZenApiKey Y3BhZG1pbjpGOHZCeEtjQ1dPczlnN1lRaDZLb2VHS3M1eFBqWU90c04xYk5KSEhP"
@@ -71,5 +71,6 @@ export K8S_CLUSTER_NAME=concert
 export K8S_NAMESPACE=qotd
 export CONTAINER_COMMAND="podman run"
 export OPTIONS="--platform linux/amd64 -it --rm -u 0 --network ibm-roja-network-01"
+
 
 
