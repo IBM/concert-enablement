@@ -9,7 +9,7 @@ export CONCERT_TOOLKIT_IMAGE=icr.io/cpopen/ibm-concert-toolkit:v1.0.4
 #export CONCERT_PASSWORD="<YOUR_CONCERT_PASSWORD>"
 # If running Concert on OpenShift
 export BASE_URL="https://concert-concert-instance.apps.679269c5f501a868a5829497.ocp.techzone.ibm.com/ibm/concert"
-export TOKEN="ZenApiKey Y3BhZG1pbjpGOHZCeEtjQ1dPczlnN1lRaDZLb2VHS3M1eFBqWU90c04xYk5KSEhP"
+export TOKEN="<ZenApiKey>"
 ####
 # cyclonedx generation utility for source code
 ####
